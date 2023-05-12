@@ -1,0 +1,49 @@
+import pandas as pd
+
+path = "/content/drive/MyDrive/austrain_states_data.csv"
+df = pd.read_csv(path, encoding='iso-8859-1')
+print(df.head())
+print(df.describe())
+
+import matplotlib.pyplot as plt
+
+#Population by state
+
+plt.bar(df['state'], df['population'])
+plt.xticks(rotation=90)
+plt.title('Population by State')
+plt.xlabel('State')
+plt.ylabel('Population')
+plt.show()
+
+#Population Vs Land area
+plt.scatter(df['population'], df['state_area_km2'])
+plt.title('population vs. Land Area')
+plt.xlabel('Population')
+plt.ylabel('Land Area (km2)')
+plt.show()
+
+#Proportion of Foreign Citizens
+
+plt.hist(df['foreign_citizens_percent'])
+plt.title('Proportion of Foreign Citizens')
+plt.xlabel('Foreign Citizens (%)')
+plt.ylabel('Frequency')
+plt.show()
+
+#Number of Cities by State
+
+plt.barh(df['state'], df['city_count'])
+plt.title('Number of Cities by State')
+plt.xlabel('Number of Cities')
+plt.ylabel('State')
+plt.show()
+
+#GDP per capita of each state
+
+plt.bar(df['state'], df['gdp_per_capita_euro'])
+plt.xticks(rotation=90)
+plt.title('GDP per capita of each state')
+plt.xlabel('States')
+plt.ylabel('GDP per Capita (€)')
+plt.show()
